@@ -10,36 +10,46 @@ int main() {
     /*
      * 変数宣言
      */
-    int n;
-    int lengthCount;
+
+    long n;
+    long lengthNum;
     int length = 0;
     int a[9];
 
     /*
      *数を取得する。
      */
-    printf("Input n: ");
 
-    scanf("%d", &n);
+    printf("Input n: "); scanf("%ld", &n);
 
     /*
      * 桁数を取得する。
      */
-    lengthCount = n;
 
-    while(lengthCount != 0){
+    lengthNum = n;
 
-        lengthCount = lengthCount / 10;
+    while (lengthNum != 0){
+
+        lengthNum = lengthNum / 10;
 
         length++;
 
     }
 
-    printf("n = %d\n", n);
+    if (length > 9) {
+
+        printf("入力された数字が９桁を超えました。プログラムを終了します。\n");
+
+        return 0;
+
+    }
+
+    printf("n = %ld\n", n);
 
     /*
      * 配列に代入していく。
      */
+
     for (int i = 0; i < length; i++) {
 
         a[length - 1 - i] = (n % 10);
@@ -47,9 +57,11 @@ int main() {
         n /= 10;
 
     }
+
     /*
      * 配列から数を取得していく。
      */
+
     for (int i = 0; i < length; i++) {
 
         printf("%d", a[i]);
